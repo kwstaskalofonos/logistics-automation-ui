@@ -2,6 +2,7 @@ import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
+    secret:"2D4A614E645267556B58703273357638792F423F4428472B4B6250655368566D",
     providers: [
         CredentialsProvider({
             // The name to display on the sign in form (e.g. "Sign in with...")
@@ -26,7 +27,6 @@ export default NextAuth({
                         password: credentials?.password
                     })
                 });
-                console.log(res.ok);
                 if (!res.ok) {
                     console.log("Failed to fetch data");
                 }
@@ -35,17 +35,15 @@ export default NextAuth({
                     return;
                 }
 
-                const user = await res.json();
+                const response = await res.json();
 
-                return user;
+                return response.user;
             }
         })
-    ],
-    callbacks: {
+    ]
+    ,callbacks: {
         async session({ session, token, user }) {
             // Send properties to the client, like an access_token and user id from a provider.
-            console.log(user);
-            
             return session
           }
     }

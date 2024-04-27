@@ -2,24 +2,25 @@
 import { SessionProvider, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { signOut } from "next-auth/react"
+import { signOut } from "next-auth/react";
+import React from "react";
 
 const Navbar: React.FunctionComponent = () => {
 
   const router = useRouter();
-  const {data: session} = useSession();
+  const { data: session, status } = useSession();
 
-  useEffect(()=>{
-    console.log(session);
-  },[])
+  useEffect(() => {
+    console.log(session?.user);
+  }, [session])
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="https://bulma.io">
           <svg width="640" height="160" viewBox="0 0 640 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" fill="black" className="bd-svg-black" />
-            <path fill-rule="evenodd" fill="#00D1B2" />
+            <path className="bd-svg-black" />
+            <path />
           </svg>
 
         </a>
@@ -47,12 +48,18 @@ const Navbar: React.FunctionComponent = () => {
           <div className="navbar-item">
             <div className="buttons">
               {session ?
-                <a className="button is-light" onClick={() => signOut()}>
-                Log out
-              </a> :
-              <a className="button is-light" onClick={() => router.push('/api/auth/signin')}>
-              Log in
-            </a>
+                <React.Fragment>
+                  <div className="navbar-item">
+                    {session?.user?.name}
+                  </div>
+                  <a className="button is-light" onClick={() => signOut()}>
+                    Log out
+                  </a>
+                </React.Fragment>
+                :
+                <a className="button is-light" onClick={() => router.push('/api/auth/signin')}>
+                  Log in
+                </a>
               }
             </div>
           </div>
