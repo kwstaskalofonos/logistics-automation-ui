@@ -11,9 +11,11 @@
   "dependencies": {
     "bulma": "^1.0.0",
     "next": "14.1.1",
+    "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.74.1"
+    "sass": "^1.74.1",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@types/node": "^20",
