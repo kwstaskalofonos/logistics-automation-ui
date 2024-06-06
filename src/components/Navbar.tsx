@@ -10,9 +10,6 @@ const Navbar: React.FunctionComponent = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  useEffect(() => {
-    console.log(session?.user);
-  }, [session])
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
