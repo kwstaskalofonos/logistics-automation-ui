@@ -23,10 +23,7 @@ export default function RootLayout({
         <NextAuthProvider>
           <Navbar />
           <div className="columns mt-2">
-            <div className="column is-2">
-              <Sidebar />
-            </div>
-            <div className="column">
+            <div className="column is-12">
               {children}
             </div>
           </div>

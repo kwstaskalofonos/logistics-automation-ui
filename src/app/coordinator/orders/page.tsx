@@ -5,7 +5,7 @@ const CoordOrdersPage: React.FunctionComponent = () => {
 
     return (
         <div className="notification is-primary">
-          This is coordinator's orders page.
+          This is coordinator orders page.
       </div>
     );
 }

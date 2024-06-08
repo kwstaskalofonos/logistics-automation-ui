@@ -49,7 +49,7 @@ const Navbar: React.FunctionComponent = () => {
                   <div className="navbar-item">
                     {session?.user?.name}
                   </div>
-                  <a className="button is-light" onClick={() => signOut()}>
+                  <a className="button is-light" onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })}>
                     Log out
                   </a>
                 </React.Fragment>

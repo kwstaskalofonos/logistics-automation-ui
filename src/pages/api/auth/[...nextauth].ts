@@ -1,8 +1,10 @@
-import NextAuth from "next-auth"
+import {NextAuthOptions} from "next-auth"
+import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export default NextAuth({
-    secret: "2D4A614E645267556B58703273357638792F423F4428472B4B6250655368566D",
+export const authOptions: NextAuthOptions ={
+    // secret: "2D4A614E645267556B58703273357638792F423F4428472B4B6250655368566D",
+    secret: process.env.NEXTAUTH_SECRET,
     session: {
         // Choose how you want to save the user session.
         // The default is `"jwt"`, an encrypted JWT (JWE) stored in the session cookie.
@@ -67,13 +69,15 @@ export default NextAuth({
     , callbacks: {
         async jwt({token, user}) {
             // Add access_token to the token right after signin
-
             return { ...token, ...user };
         },
         async session({ session, token, user }) {
             // Send properties to the client, like an access_token and user id from a provider.
             session.user = token;
+            session.accessToken = token.accessToken
             return session
         }
     }
-})
+}
+
+export default NextAuth(authOptions)

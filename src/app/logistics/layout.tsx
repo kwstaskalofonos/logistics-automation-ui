@@ -18,7 +18,7 @@ export default function RootLayout({
     const render = () => {
         const array:any[]=[];
         if(session && session?.user) {
-            if(session?.user?.role == 'COORDINATOR') {
+            if(session?.user?.role == 'LOGISTICS') {
                 // return children;
                 array.push(<div className="columns">
                     <div className="column is-2">
