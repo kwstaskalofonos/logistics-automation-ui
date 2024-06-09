@@ -1,13 +1,13 @@
 import React from "react";
 
 
-const Dashboard: React.FunctionComponent = () => {
+const NewOrderPage: React.FunctionComponent = () => {
 
     return (
         <div className="notification is-primary">
-          This is dashboard.
+          This is New Order Page.
       </div>
     );
 }
 
-export default Dashboard;
+export default NewOrderPage;

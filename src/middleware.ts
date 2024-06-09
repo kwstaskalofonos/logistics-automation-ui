@@ -5,15 +5,18 @@ import { withAuth } from "next-auth/middleware"
 
 export default withAuth(
   function middleware(request) {
-    console.log(request)
     if(request.nextauth.token) {
-      return NextResponse.next()
+      return NextResponse.next();
     }
     
   },
   {
     callbacks: {
-      authorized: ({ token }) => token?.role === "COORDINATOR",
+      authorized: ({ token }) => {
+        token?.role === "COORDINATOR" || 
+        token?.role === "LOGISTICS" || 
+        token?.role === "STORAGE"
+      },
     },
   },
 )

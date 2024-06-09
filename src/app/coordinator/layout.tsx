@@ -20,14 +20,9 @@ export default function RootLayout({
         if(session && session?.user) {
             if(session?.user?.role == 'COORDINATOR') {
                 // return children;
-                array.push(<div className="columns">
-                    <div className="column is-2">
-                      <Sidebar/>
-                    </div>
-                    <div className="column">
-                      {children}
-                    </div>
-                </div>);
+                array.push(<React.Fragment>
+                    {children}
+                </React.Fragment>);
                 return array;
             }
             router.push("/");
