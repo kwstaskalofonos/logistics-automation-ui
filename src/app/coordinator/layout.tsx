@@ -18,7 +18,7 @@ export default function RootLayout({
     const render = () => {
         const array:any[]=[];
         if(session && session?.user) {
-            if(session?.user?.role == 'COORDINATOR') {
+            if(session?.user?.companyType == 'COORDINATOR') {
                 // return children;
                 array.push(<React.Fragment>
                     {children}

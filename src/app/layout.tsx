@@ -19,14 +19,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{fontFamily:'Arial'}}>
         <NextAuthProvider>
           <Navbar />
           <div className="columns mt-2">
             <div className="column is-1">
               <Sidebar/>
             </div>
-            <div className="column">
+            <div className="column" style={{backgroundColor:"#f5f2ed"}}>
               {children}
             </div>
           </div>

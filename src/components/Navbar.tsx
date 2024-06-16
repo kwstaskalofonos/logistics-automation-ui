@@ -2,13 +2,12 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Navbar: React.FunctionComponent = () => {
 
   const router = useRouter();
   const { data: session, status } = useSession();
-
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">

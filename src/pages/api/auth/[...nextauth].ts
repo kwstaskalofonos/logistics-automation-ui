@@ -1,6 +1,7 @@
 import {NextAuthOptions} from "next-auth"
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import jwt from "jsonwebtoken";
 
 export const authOptions: NextAuthOptions ={
     // secret: "2D4A614E645267556B58703273357638792F423F4428472B4B6250655368566D",
@@ -73,8 +74,9 @@ export const authOptions: NextAuthOptions ={
         },
         async session({ session, token, user }) {
             // Send properties to the client, like an access_token and user id from a provider.
+            const decoded = jwt.decode(token?.accessToken as string)
             //@ts-ignore
-            session.user = token;
+            session.user = decoded;
             session.accessToken = token.accessToken as string;
             return session;
         }

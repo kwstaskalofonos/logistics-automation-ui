@@ -12,11 +12,12 @@ export default withAuth(
   },
   {
     callbacks: {
-      authorized: ({ token }) => {
-        token?.role === "COORDINATOR" || 
-        token?.role === "LOGISTICS" || 
-        token?.role === "STORAGE"
-      },
+      // authorized: ({ token }) => {
+      //   console.log(token);
+      //   token?.companyType === "COORDINATOR" || 
+      //   token?.companyType === "LOGISTICS" || 
+      //   token?.companyType === "STORAGE"
+      // },
     },
   },
 )

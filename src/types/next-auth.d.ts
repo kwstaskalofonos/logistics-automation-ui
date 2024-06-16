@@ -8,7 +8,9 @@ declare module "next-auth" {
     user: {
       /** The user's role. */
       role: string,
-      name: string
+      name: string,
+      companyType: string,
+      companyName: string
     },
     accessToken: string
   }
