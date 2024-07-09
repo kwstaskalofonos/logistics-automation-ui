@@ -2,6 +2,7 @@ import {NextAuthOptions} from "next-auth"
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import jwt from "jsonwebtoken";
+import { randomBytes, randomUUID } from "crypto";
 
 export const authOptions: NextAuthOptions ={
     // secret: "2D4A614E645267556B58703273357638792F423F4428472B4B6250655368566D",

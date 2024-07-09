@@ -19,6 +19,7 @@ const Sidebar = () => {
                     <li onClick={()=>router.push("/")}><a>Dashboard</a></li>
                     <li onClick={()=>router.push("/coordinator/newOrder")}><a>New Order</a></li>
                     <li onClick={()=>router.push("/coordinator/orders")}><a>Orders</a></li>
+                    <li onClick={()=>router.push("/coordinator/items")}><a>Products</a></li>
                     <li><a>Customers</a></li>
                 </ul> :
                 (session?.user.companyType == "LOGISTICS") ?
