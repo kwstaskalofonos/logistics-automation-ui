@@ -17,10 +17,10 @@ const LPaging: React.FunctionComponent<Props> = ({totalPages,currentPage,lastPag
         for(let i=0; i<totalPages; i++) {
             if(i == currentPage) {
                 array.push(<li>
-                <a href="#" className="pagination-link is-current">{i+1}</a></li>);
+                <a key={"btn-paging-"+i} className="pagination-link is-current">{i+1}</a></li>);
             } else {
                 array.push(<li>
-                <a href="#" className="pagination-link">{i+1}</a></li>);
+                <a key={"btn-paging-"+i} className="pagination-link">{i+1}</a></li>);
             }
         }
         return array;
@@ -28,9 +28,9 @@ const LPaging: React.FunctionComponent<Props> = ({totalPages,currentPage,lastPag
 
     return (
         <nav className="pagination" role="navigation" aria-label="pagination">
-            <a href="#" className="pagination-previous">Previous</a>
-            <a href="#" className="pagination-next">Next page</a>
-            <ul className="pagination-list">
+            <a key={"btn-prev"} className="pagination-previous">Previous</a>
+            <a key={"btn-next"} className="pagination-next">Next page</a>
+            <ul key={"ul-paging"} className="pagination-list">
                {renderButtons()}
             </ul>
         </nav>)

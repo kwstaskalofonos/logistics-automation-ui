@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from "react";
+import { useRef } from "react";
 import LPaging from "@/components/LPaging";
 import LTable from "@/components/LTable";
 import {useSession } from "next-auth/react";
@@ -10,10 +11,12 @@ import usePaging from "@/(hooks)/usePaging";
 
 const CoordItemsPage: React.FunctionComponent = () => {
 
-    const [data, totalPages, totalElements, page, last, first] = usePaging<Item>("items/dynamic",0,8);
+  const pagingRef = useRef<any>(null);
+  const [data, totalPages, totalElements, page, last, first] = usePaging<Item>({url:"items/dynamic", pageNumber:0,pageSize:8}, pagingRef);
 
-    useEffect(() => {
-    },[data])
+  useEffect(()=>{
+    pagingRef.current.fetchData();
+  },[])
 
 
     return(<React.Fragment>
