@@ -70,9 +70,6 @@ const CoordOrdersPage: React.FunctionComponent = () => {
           </tbody>
         </LTable>
       </div>
-      <div className="container-fluid is-flex is-justify-content-center mt-3">
-          <LPaging />
-        </div>
     </React.Fragment>
   );
 }
