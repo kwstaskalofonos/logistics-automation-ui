@@ -1,13 +1,14 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRef } from "react";
 import LPaging from "@/components/LPaging";
 import LTable from "@/components/LTable";
-import { useSession } from "next-auth/react";
-import { getPage } from "@/services/actions";
 import { Item } from "@/services/entities";
 import usePaging, { PaginationHandle } from "@/(hooks)/usePaging";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit} from "@fortawesome/free-solid-svg-icons/faEdit";
+import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
 
 const CoordItemsPage: React.FunctionComponent = () => {
 
@@ -18,9 +19,17 @@ const CoordItemsPage: React.FunctionComponent = () => {
     return index + 1 + (page * 5);
   }
 
+
+  const actions = () => {
+    let array:any[] = [];
+    array.push(<span className={"icon"}><FontAwesomeIcon icon={faEdit}/></span>);
+    array.push(<span className={"icon"}><FontAwesomeIcon icon={faTrash}/></span>);
+    return array;
+  }
+
   return (<React.Fragment>
     <div className="container is-flex is-justify-content-center">
-      <h1 className="title ">Products</h1>
+      <h1 className="title ">Stock</h1>
     </div>
     <div className="container-fluid mt-4 p-2">
       <LTable>
@@ -29,6 +38,7 @@ const CoordItemsPage: React.FunctionComponent = () => {
             <th>#</th>
             <th>Title</th>
             <th>UOM</th>
+            <th>Code</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -37,13 +47,15 @@ const CoordItemsPage: React.FunctionComponent = () => {
             <th></th>
             <th><input className="input is-small" placeholder="search by Title" /></th>
             <th><input className="input is-small" placeholder="search by uom" /></th>
+            <th><input className="input is-small" placeholder="search by code" /></th>
             <th></th>
           </tr>
           {data && data.map((v, index) => <tr key={"row-test-" + v.id}>
             <th>{counter(index)}</th>
             <th className="has-text-weight-light is-size-6">{v.title}</th>
             <th className="has-text-weight-light is-size-6">{v.uom}</th>
-            <th className="has-text-weight-light is-size-6">View</th>
+            <th className="has-text-weight-light is-size-6">{v.externalCode}</th>
+            <th className="has-text-weight-light is-size-6">{actions()}</th>
           </tr>)
 
           }

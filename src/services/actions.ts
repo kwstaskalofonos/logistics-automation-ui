@@ -1,8 +1,6 @@
 import { Session } from "next-auth";
 import { signOut } from "next-auth/react";
 
-const BASE_URL = "http://localhost:8080/api/"; 
-
 
 export async function getPage(
     session: Session,
@@ -10,8 +8,8 @@ export async function getPage(
     pageNo:number,
     pageSize:number, 
     filters?:any) {
-    const url =BASE_URL+uri;
-
+    const url =process.env.NEXT_PUBLIC_API_URL+uri;
+    console.log(url);
     const body={
         "pageNo":pageNo,
         "pageSize":pageSize,

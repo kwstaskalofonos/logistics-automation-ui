@@ -14,5 +14,6 @@ export interface Page {
 export interface Item {
     id:number,
     title:string,
-    uom:string
+    uom:string,
+    externalCode:string
 }

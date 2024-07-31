@@ -43,8 +43,9 @@ export const authOptions: NextAuthOptions ={
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req) {
+                const url = process.env.API_URL+"auth/login";
                 // Add logic here to look up the user from the credentials supplied
-                const res = await fetch("http://localhost:8080/api/auth/login", {
+                const res = await fetch(url, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"

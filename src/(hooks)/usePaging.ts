@@ -37,8 +37,8 @@ const usePaging = <T,>(
   const fetchData = async () => {
     const filters = [
       {
-        fieldName: 'title',
-        value: 'title ',
+        fieldName: 'externalCode',
+        value: '13',
       }
     ];
     

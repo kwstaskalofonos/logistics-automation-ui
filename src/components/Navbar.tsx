@@ -3,6 +3,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import React, { useEffect } from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBell} from "@fortawesome/free-solid-svg-icons/faBell";
 
 const Navbar: React.FunctionComponent = () => {
 
@@ -46,6 +48,10 @@ const Navbar: React.FunctionComponent = () => {
                 <React.Fragment>
                   <div className="navbar-item">
                     {session?.user?.name}
+                  </div>
+                  <div className="navbar-item">
+                    <span className={"icon"}>
+                      <FontAwesomeIcon icon={faBell}/></span>
                   </div>
                   <a className="button is-light" onClick={() => signOut({ callbackUrl: 'http://localhost:3000/' })}>
                     Log out
