@@ -4,6 +4,7 @@ import './globals.scss';
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import NextAuthProvider from "@/components/NextAuthProvider";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{fontFamily:'Arial'}}>
+      <body className={inter.className}>
         <NextAuthProvider>
-          <Navbar />
-          <div className="columns mt-2">
-            <div className="column is-1">
-              <Sidebar/>
+          <div className="flex flex-col md:flex-row md:min-h-[calc(100vh)]">
+            <div className="bg-neutral-700 text-zinc-200 pl-4 pr-6 pt-3 pb-3">
+              <Sidebar />
             </div>
-            <div className="column" style={{backgroundColor:"#f5f2ed"}}>
+            <div className="flex-grow pl-4 pr-6">
+              <Navbar/>
               {children}
             </div>
           </div>

@@ -3,12 +3,13 @@
 import React from "react";
 import { useRef } from "react";
 import LPaging from "@/components/LPaging";
-import LTable from "@/components/LTable";
 import { Item } from "@/services/entities";
 import usePaging, { PaginationHandle } from "@/(hooks)/usePaging";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faEdit} from "@fortawesome/free-solid-svg-icons/faEdit";
-import {faTrash} from "@fortawesome/free-solid-svg-icons/faTrash";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons/faEdit";
+import { faTrash } from "@fortawesome/free-solid-svg-icons/faTrash";
+import Portlet from "@/components/Portet";
+import SearchWrapper from "@/components/SearchWrapper";
 
 const CoordItemsPage: React.FunctionComponent = () => {
 
@@ -21,48 +22,51 @@ const CoordItemsPage: React.FunctionComponent = () => {
 
 
   const actions = () => {
-    let array:any[] = [];
-    array.push(<span className={"icon"}><FontAwesomeIcon icon={faEdit}/></span>);
-    array.push(<span className={"icon"}><FontAwesomeIcon icon={faTrash}/></span>);
+    let array: any[] = [];
+    array.push(<span className={"icon"}><FontAwesomeIcon icon={faEdit} /></span>);
+    array.push(<span className={"icon"}><FontAwesomeIcon icon={faTrash} /></span>);
     return array;
   }
 
   return (<React.Fragment>
-    <div className="container is-flex is-justify-content-center">
-      <h1 className="title ">Stock</h1>
+    <div className="container">
+      <h1>Stock</h1>
     </div>
-    <div className="container-fluid mt-4 p-2">
-      <LTable>
+    <Portlet>
+      <table className="table-auto w-full text-md">
         <thead>
-          <tr className="is-size-5">
-            <th>#</th>
-            <th>Title</th>
-            <th>UOM</th>
-            <th>Code</th>
-            <th>Actions</th>
+          <tr>
+            <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-black text-left">
+              #</th>
+            <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-black text-left">
+              Title</th>
+            <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-black text-left">
+              UOM</th>
+            <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-black text-left">
+              Code</th>
+            <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-black text-left">
+              Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr className="is-size-5">
-            <th></th>
-            <th><input className="input is-small" placeholder="search by Title" /></th>
-            <th><input className="input is-small" placeholder="search by uom" /></th>
-            <th><input className="input is-small" placeholder="search by code" /></th>
-            <th></th>
+        <tbody className="bg-white dark:bg-slate-800">
+          <tr>
+            <td></td>
+            <SearchWrapper name="title" placeholder="Search by Title"/>
+            <SearchWrapper name="uom" placeholder="Search by UOM"/>
+            <SearchWrapper name="externalCode" placeholder="Search by External Code"/>
+            <td></td>
           </tr>
           {data && data.map((v, index) => <tr key={"row-test-" + v.id}>
-            <th>{counter(index)}</th>
-            <th className="has-text-weight-light is-size-6">{v.title}</th>
-            <th className="has-text-weight-light is-size-6">{v.uom}</th>
-            <th className="has-text-weight-light is-size-6">{v.externalCode}</th>
-            <th className="has-text-weight-light is-size-6">{actions()}</th>
+            <td className="border-b dark:border-slate-700 p-4 pl-8 text-gray-600">{counter(index)}</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8 text-gray-600">{v.title}</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8 text-gray-600">{v.uom}</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8 text-gray-600">{v.externalCode}</td>
+            <td className="border-b dark:border-slate-700 p-4 pl-8 text-gray-600">{actions()}</td>
           </tr>)
 
           }
         </tbody>
-      </LTable>
-    </div>
-    <div className="container-fluid is-flex is-justify-content-center mt-3">
+      </table>
       {(data && data.length > 0) &&
         <LPaging totalPages={totalPages}
           currentPage={page} firstPage={first}
@@ -70,7 +74,8 @@ const CoordItemsPage: React.FunctionComponent = () => {
           getPrevPage={pagingRef.current?.getPrevPage}
           goToPage={pagingRef.current?.getSpecificPage} />
       }
-    </div>
+    </Portlet>
+
   </React.Fragment>)
 }
 
