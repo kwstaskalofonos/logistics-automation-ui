@@ -22,20 +22,20 @@ const Sidebar = () => {
             <div className="hidden md:block flex flex-col pt-7">
                 {(session?.user.companyType == "COORDINATOR") ?
                     <ul>
-                        <li onClick={() => router.push("/")}><a>Dashboard</a></li>
-                        <li onClick={() => router.push("/coordinator/newOrder")}><a>New Order</a></li>
-                        <li onClick={() => router.push("/coordinator/orders")}><a>Orders</a></li>
-                        <li onClick={() => router.push("/coordinator/items")}><a>Products</a></li>
-                        <li><a>Customers</a></li>
+                        <li onClick={() => router.push("/")} style={{cursor:"pointer"}}><a>Dashboard</a></li>
+                        <li onClick={() => router.push("/coordinator/newOrder")} style={{cursor:"pointer"}}><a>New Order</a></li>
+                        <li onClick={() => router.push("/coordinator/orders")} style={{cursor:"pointer"}}><a>Orders</a></li>
+                        <li onClick={() => router.push("/coordinator/items")} style={{cursor:"pointer"}}><a>Products</a></li>
+                        <li onClick={() => router.push("/coordinator/customers")} style={{cursor:"pointer"}}><a>Customers</a></li>
                     </ul> :
                     (session?.user.companyType == "LOGISTICS") ?
                         <ul>
-                            <li onClick={() => router.push("/")}><a>Dashboard</a></li>
-                            <li onClick={() => router.push("/logistics/orders")}><a>Orders</a></li>
+                            <li onClick={() => router.push("/")} style={{cursor:"pointer"}}><a>Dashboard</a></li>
+                            <li onClick={() => router.push("/logistics/orders")} style={{cursor:"pointer"}}><a>Orders</a></li>
                         </ul> :
                         (session?.user.companyType == "STORAGE") ?
                             <ul>
-                                <li onClick={() => router.push("/")}><a>Dashboard</a></li>
+                                <li onClick={() => router.push("/")} style={{cursor:"pointer"}}><a>Dashboard</a></li>
                             </ul> :
                             <ul></ul>
                 }

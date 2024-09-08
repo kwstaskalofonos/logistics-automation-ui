@@ -13,7 +13,7 @@ interface Props {
 export interface PaginationHandle {
   getPrevPage: () => void;
   getNextPage: () => void;
-  fetchData: () => void;
+  fetchData: (filters:any[]) => void;
   getSpecificPage: (selected: number) => void;
 }
 
@@ -30,21 +30,20 @@ const usePaging = <T,>(
 
 
   useEffect(() => {
-    fetchData();
+    fetchData([]);
   }, [page])
 
 
-  const fetchData = async () => {
-    const filters = [
-      {
-        fieldName: 'externalCode',
-        value: '13',
-      }
-    ];
+  const fetchData = async (filters:any[] = []) => {
+    // const filters = [
+    //   {
+    //     fieldName: 'externalCode',
+    //     value: '13',
+    //   }
+    // ];
     
 
-    //@ts-ignore
-    const result = await getPage(session, url, page, pageSize, []);
+    const result = await getPage(session, url, page, pageSize, filters);
     setData(result.content);
     setTotalPages(result.totalPages);
     setLast(result.last);
@@ -52,8 +51,8 @@ const usePaging = <T,>(
   };
 
   useImperativeHandle(ref, () => ({
-    fetchData: () => {
-      fetchData();
+    fetchData: (filters:any[]) => {
+      fetchData(filters);
     },
     getPrevPage: () => {
       setPage(page - 1);

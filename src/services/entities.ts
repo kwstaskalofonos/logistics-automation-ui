@@ -15,5 +15,7 @@ export interface Item {
     id:number,
     title:string,
     uom:string,
-    externalCode:string
+    externalCode:string,
+    lotNumber:string
+    quantity:number
 }
