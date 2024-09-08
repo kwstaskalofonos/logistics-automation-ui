@@ -3,6 +3,7 @@
 import { useState, useEffect, useImperativeHandle } from "react";
 import { useSession } from "next-auth/react";
 import { getPage } from "@/services/actions";
+import globalState from "@/store/store";
 
 interface Props {
   url: string,
@@ -31,7 +32,7 @@ const usePaging = <T,>(
 
   useEffect(() => {
     fetchData([]);
-  }, [page])
+  }, [page]);
 
 
   const fetchData = async (filters:any[] = []) => {

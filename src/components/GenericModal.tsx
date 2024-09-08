@@ -10,7 +10,7 @@ interface Props {
     cancel: any
 }
 
-const GenericModal: React.FunctionComponent<any> = ({ children, setShowModal, title, submit, cancel }) => {
+const GenericModal: React.FunctionComponent<Props> = ({ children, setShowModal, title, submit, cancel }) => {
 
 
 

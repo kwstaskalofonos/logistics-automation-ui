@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import NextAuthProvider from "@/components/NextAuthProvider";
 import Footer from "@/components/Footer";
+import Modal from "@/components/modal/Modal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
               {children}
             </div>
           </div>
+          <Modal/>
         </NextAuthProvider>
       </body>
     </html>
