@@ -28,6 +28,29 @@ export async function post(
 
 }
 
+export async function getAll(
+    session: Session | null,
+    uri: string
+) {
+    if (!session) return;
+    const url = process.env.NEXT_PUBLIC_API_URL + uri;
+    const requestOptions: RequestInit = {
+        method: "GET",
+        headers: getHeaders(session),
+        redirect: "follow",
+        mode: "cors"
+    };
+    try {
+        const res = await fetch(url, requestOptions);
+        parseResponse(res);
+        return await res.json();
+    } catch (e) {
+        console.log("Fetch error: ", e);
+        throw e;
+    }
+
+}
+
 export async function getPage(
     session: Session | null,
     uri: string,
@@ -54,6 +77,7 @@ export async function getPage(
         const res = await fetch(url, requestOptions);
         parseResponse(res);
         const result = await res.json();
+        console.log(result);
         return result;
     } catch (e) {
         console.log("Fetch error: ", e);

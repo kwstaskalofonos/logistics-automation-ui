@@ -12,10 +12,17 @@ export interface Page {
 
 
 export interface Item {
-    id:number,
+    id?:number,
     title:string,
     uom:string,
     externalCode:string,
     lotNumber:string
     quantity:number
+}
+
+export interface Customer {
+    id:number,
+    title:string,
+    address:string
+    phone:number
 }
